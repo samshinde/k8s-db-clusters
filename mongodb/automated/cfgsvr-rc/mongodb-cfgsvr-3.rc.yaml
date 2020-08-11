@@ -1,0 +1,40 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  namespace: mongo-cluster
+  name: mongodb-3-ncfg
+spec:
+  replicas: 1
+  selector:
+    name: mongodb-3-ncfg
+  template:
+    metadata:
+      labels:
+        name: mongodb-3-ncfg
+        db: mongodb
+      name: mongodb-3-ncfg
+    spec:
+      containers:
+      #- imagePullPolicy: Always
+      - image: mongo:latest
+        name: mongodb
+        args:
+         - "mongod"
+         - "--smallfiles"
+         - "--noprealloc"
+         - "--configsvr"
+         - "--replSet"
+         - "ncfg"
+         - "--noauth"
+         - "--bind_ip_all"
+         - "--port"
+         - "27017"
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - mountPath: /data/db
+          name: nfs
+      volumes:
+      - name: nfs
+        persistentVolumeClaim:
+          claimName: node21-3-nfs

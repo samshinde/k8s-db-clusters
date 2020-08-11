@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: node12-6-nfs
+  namespace: mongo-cluster
+spec:
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  nfs:
+    server: 192.168.102.199
+    path: "/mnt/k8s/nfs1/"

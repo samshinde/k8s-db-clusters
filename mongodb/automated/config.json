@@ -1,0 +1,110 @@
+{
+    "cfg_ips": "cfg1/mongodb-1-cfg1:27017,mongodb-2-cfg1:27017,mongodb-3-cfg1:27017;cfg2/mongodb-1-cfg2:27017,mongodb-2-cfg2:27017,mongodb-3-cfg2:27017",
+    "configs": [
+        {
+            "hosts": [
+                {
+                    "host": "mongodb-1-rs1:27017",
+                    "type": "primary"
+                },
+                {
+                    "host": "mongodb-2-rs1:27017",
+                    "type": "secondary"
+                },
+                {
+                    "host": "mongodb-3-rs1:27017",
+                    "type": "secondary"
+                }
+            ],
+            "name": "rs1",
+            "type": "shsvr_replica_set"
+        },
+        {
+            "hosts": [
+                {
+                    "host": "mongodb-1-rs2:27017",
+                    "type": "primary"
+                },
+                {
+                    "host": "mongodb-2-rs2:27017",
+                    "type": "secondary"
+                },
+                {
+                    "host": "mongodb-3-rs2:27017",
+                    "type": "secondary"
+                }
+            ],
+            "name": "rs2",
+            "type": "shsvr_replica_set"
+        },
+        {
+            "hosts": [
+                {
+                    "host": "mongodb-1-rs3:27017",
+                    "type": "primary"
+                },
+                {
+                    "host": "mongodb-2-rs3:27017",
+                    "type": "secondary"
+                },
+                {
+                    "host": "mongodb-3-rs3:27017",
+                    "type": "secondary"
+                }
+            ],
+            "name": "rs3",
+            "type": "shsvr_replica_set"
+        },
+        {
+            "hosts": [
+                {
+                    "host": "mongodb-1-cfg1:27017",
+                    "type": "primary"
+                },
+                {
+                    "host": "mongodb-2-cfg1:27017",
+                    "type": "secondary"
+                },
+                {
+                    "host": "mongodb-3-cfg1:27017",
+                    "type": "secondary"
+                }
+            ],
+            "name": "cfg1",
+            "type": "cfgsvr_replica_set"
+        },
+        {
+            "hosts": [
+                {
+                    "host": "mongodb-1-cfg2:27017",
+                    "type": "primary"
+                },
+                {
+                    "host": "mongodb-2-cfg2:27017",
+                    "type": "secondary"
+                },
+                {
+                    "host": "mongodb-3-cfg2:27017",
+                    "type": "secondary"
+                }
+            ],
+            "name": "cfg2",
+            "type": "cfgsvr_replica_set"
+        },
+        {
+            "hosts": [
+                {
+                    "host": "mongos-1:27017",
+                    "type": "primary"
+                },
+                {
+                    "host": "mongos-2:27017",
+                    "type": "secondary"
+                }
+            ],
+            "name": "mongosvr",
+            "type": "mongos"
+        }
+    ],
+    "namespace": "amol"
+}

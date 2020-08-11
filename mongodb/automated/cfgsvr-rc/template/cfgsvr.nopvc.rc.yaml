@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  namespace: #namespace
+  name: mongodb-#mongodbi-cfg#cfgi
+spec:
+  replicas: 1
+  selector:
+    name: mongodb-#mongodbi-cfg#cfgi
+  template:
+    metadata:
+      labels:
+        name: mongodb-#mongodbi-cfg#cfgi
+        db: mongodb
+      name: mongodb-#mongodbi-cfg#cfgi
+    spec:
+      containers:
+      #- imagePullPolicy: Always
+      - image: mongo:latest
+        name: mongodb
+        args:
+         - "mongod"
+         - "--smallfiles"
+         - "--noprealloc"
+         - "--configsvr"
+         - "--replSet"
+         - "cfg#cfgi"
+         - "--noauth"
+         - "--bind_ip_all"
+         - "--port"
+         - "27017"
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - mountPath: /data/db
+          name: nfs
+      volumes:
+      - name: nfs
+        emptyDir: {}

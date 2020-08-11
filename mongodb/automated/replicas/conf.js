@@ -1,0 +1,1 @@
+"rs.initiate({_id:\"rs1\", members: [{_id: 0, host:\"mongodb-1-rs1:27017\"}, {_id:1, host:\"mongodb-2-rs1:27017\"}, {_id:2, host:\"mongodb-3-rs1:27017\"}]});"

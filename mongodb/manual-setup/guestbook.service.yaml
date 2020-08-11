@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: guestbook
+  name: guestbook
+spec:
+  ports:
+    - port: 80
+      targetPort: 8080
+  selector:
+    name: guestbook
+  type: LoadBalancer
+  loadBalancerIP: 130.211.97.59

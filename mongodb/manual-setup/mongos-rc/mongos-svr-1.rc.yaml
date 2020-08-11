@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  namespace: mongo-cluster
+  name: mongos-1
+spec:
+  replicas: 1
+  selector:
+    name: mongos-1
+  template:
+    metadata:
+      labels:
+        name: mongos-1
+        db: mongodb
+      name: mongodb-1
+    spec:
+      containers:
+      #- imagePullPolicy: Always
+      - image: mongo:latest
+        name: mongodb
+        args:
+         - "mongos"
+         - "--configdb"
+         - "ncfg/10.36.0.5:27019,10.44.0.7:27019,10.44.0.8:27019"
+         - "--port"
+         - "27017"
+        ports:
+        - containerPort: 27017
+        volumeMounts:
+        - mountPath: /data/db
+          name: nfs
+      volumes:
+      - name: nfs
+        persistentVolumeClaim:
+          claimName: node21-4-nfs
